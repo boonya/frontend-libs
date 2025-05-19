@@ -13,7 +13,12 @@
     "packages/*"
   ],
   "scripts": {
-    "format": "prettier --write ."
+    "codestyle:check": "prettier --check",
+    "codestyle:format": "prettier --write",
+    "lint": "echo 'Not impelmented yet.' && exit 0",
+    "test": "echo 'Not impelmented yet.' && exit 0",
+    "typecheck": "tsc -b tsconfig.json",
+    "verify": "concurrently -c auto npm:codestyle:check . npm:lint npm:typecheck npm:test"
   },
   "dependencies": {
     "@tsconfig/node22": "^22.0.1",
