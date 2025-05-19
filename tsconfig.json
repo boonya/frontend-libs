@@ -1,0 +1,23 @@
+{
+  "extends": "@tsconfig/node22/tsconfig.json",
+  "compilerOptions": {
+    "allowSyntheticDefaultImports": true,
+    "baseUrl": ".",
+    "inlineSources": true,
+    "jsx": "react-jsx",
+    "lib": ["es2023", "dom"],
+    "noEmit": true,
+    "removeComments": false,
+    "resolveJsonModule": true,
+    "sourceMap": true,
+    "paths": {
+      "@boonya/frontend-utils": ["packages/frontend-utils/src/index.ts"],
+      "@boonya/frontend-utils/*": ["packages/frontend-utils/src/*"],
+      "@boonya/react-utils/*": ["packages/react-utils/src/*"],
+    }
+  },
+  "ts-node": {
+    "transpileOnly": true
+  },
+  "exclude": ["**/__.**", "**/build/", "**/coverage/", "**/node_modules/", "**/storybook-static/"]
+}

@@ -1,0 +1,20 @@
+import {Meta} from '@storybook/blocks';
+
+<Meta />
+
+# useSafeContext
+
+The hook is just a wrapper around builtin `useContext`
+but it throws and error if was rendered not in a defined context.
+
+The hook treats `undefined` value as missed context.
+So, make sure your context does not contain `undefined`.
+If you need to represent missed value, I would recommend to use `null` instead.
+
+```ts
+import useSafeContext from '@boonya/react-utils/hooks/useSafeContext';
+```
+
+```ts
+function useSafeContext<T>(context: Context<T>): Context<T> | never;
+```

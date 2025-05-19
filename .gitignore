@@ -1,0 +1,15 @@
+# environment crud
+.DS_Store
+*.swp
+.vscode/
+
+.env
+build/
+/storybook-static/
+__.*
+*.tsbuildinfo
+
+# npm
+node_modules/
+coverage/
+npm-debug.log*

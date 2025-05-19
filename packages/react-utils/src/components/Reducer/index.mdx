@@ -1,0 +1,93 @@
+import {Meta} from '@storybook/blocks';
+
+<Meta />
+
+# Reducer
+
+```ts
+import Reducer from '@boonya/react-utils/components/Reducer';
+```
+
+The purpose of this component is to simplify support of code base.
+
+There are cases when you need to nest many different components under each other. And then, when you need to add one more or remove some, you will have to reorganize many indentations.
+
+For example, you have a component like below:
+
+```tsx
+function Component() {
+  return (
+    <ErrorBoundary>
+      <Suspense>
+        <PaginationProvider>
+          <FetchProvider>
+            <UpdateProvider>
+              <CreateProvider>
+                <ListScreen />
+              </CreateProvider>
+            </UpdateProvider>
+          </FetchProvider>
+        </PaginationProvider>
+      </Suspense>
+    </ErrorBoundary>
+  );
+}
+```
+
+If you need to introduce additional Data Provider context, your diff will look like this:
+
+```diff
+  return (
+    <ErrorBoundary>
+       <Suspense>
+         <PaginationProvider>
+           <FetchProvider>
+-            <UpdateProvider>
+-              <CreateProvider>
+-                <ListScreen />
+-              </CreateProvider>
+-            </UpdateProvider>
++            <DeleteProvider>
++              <UpdateProvider>
++                <CreateProvider>
++                  <ListScreen />
++                </CreateProvider>
++              </UpdateProvider>
++            </DeleteProvider>
+           </FetchProvider>
+         </PaginationProvider>
+       </Suspense>
+    </ErrorBoundary>
+  );
+```
+
+So, the `Reducer` accepts all that tree as a flat array of `ReactNode`s, like below:
+
+```tsx
+function Component() {
+  return (
+    <ErrorBoundary>
+      <Suspense>
+        <Reducer tree={[PaginationProvider, FetchProvider, UpdateProvider, CreateProvider]}>
+          <ListScreen />
+        </Reducer>
+      </Suspense>
+    </ErrorBoundary>
+  );
+}
+```
+
+And the diff is going too look like this:
+
+```diff
+        <Reducer
+           tree={[
+             PaginationProvider,
+             FetchProvider,
++            DeleteProvider,
+             UpdateProvider,
+             CreateProvider,
+           ]}
+```
+
+**NOTE**: Do not overuse this component as it's API and behavior is not tested and verified enough yet.
