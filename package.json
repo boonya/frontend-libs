@@ -12,7 +12,9 @@
   "workspaces": [
     "packages/*"
   ],
-  "scripts": {},
+  "scripts": {
+    "format": "prettier --write ."
+  },
   "dependencies": {
     "@tsconfig/node22": "^22.0.1",
     "ts-node": "^10.9.2",

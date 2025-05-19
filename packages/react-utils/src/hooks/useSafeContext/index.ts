@@ -11,10 +11,13 @@ export class MissedContextError extends ExtendableError {}
  * So, make sure your context does not contain `undefined`.
  * If you need to represent missed value, I would recommend to use `null` instead.
  */
-export default function useSafeContext<T>(context: Context<T>, errorMessage = "The hook must be used within it's context provider.") {
-	const values = useContext<T>(context);
-	if (values === undefined) {
-		throw new MissedContextError(errorMessage, {cause: {context}});
-	}
-	return values;
+export default function useSafeContext<T>(
+  context: Context<T>,
+  errorMessage = "The hook must be used within it's context provider.",
+) {
+  const values = useContext<T>(context);
+  if (values === undefined) {
+    throw new MissedContextError(errorMessage, {cause: {context}});
+  }
+  return values;
 }

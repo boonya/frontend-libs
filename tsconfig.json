@@ -13,7 +13,7 @@
     "paths": {
       "@boonya/frontend-utils": ["packages/frontend-utils/src/index.ts"],
       "@boonya/frontend-utils/*": ["packages/frontend-utils/src/*"],
-      "@boonya/react-utils/*": ["packages/react-utils/src/*"],
+      "@boonya/react-utils/*": ["packages/react-utils/src/*"]
     }
   },
   "ts-node": {
