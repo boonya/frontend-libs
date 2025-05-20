@@ -14,46 +14,17 @@ concurrency:
 
 jobs:
   codestyle:
-    name: Code Style 🔎
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-node@v4
-        with:
-          node-version-file: ".nvmrc"
-      - name: Env setup
-        run: npm ci
-      - run: npm run codestyle:check .
+    uses: ./.github/workflows/codestyle.yml
+    secrets: inherit
 
-  lint:
-    name: Linting 🔎
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-node@v4
-        with:
-          node-version-file: ".nvmrc"
-      - run: npm ci
-      - run: npm run lint
+  linting:
+    uses: ./.github/workflows/linting.yml
+    secrets: inherit
 
   typecheck:
-    name: Types 🔎
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-node@v4
-        with:
-          node-version-file: ".nvmrc"
-      - run: npm ci
-      - run: npm run typecheck
+    uses: ./.github/workflows/typecheck.yml
+    secrets: inherit
 
-  test:
-    name: Testing 🔎
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-node@v4
-        with:
-          node-version-file: ".nvmrc"
-      - run: npm ci
-      - run: npm run test -- --coverage
+  testing:
+    uses: ./.github/workflows/testing.yml
+    secrets: inherit
