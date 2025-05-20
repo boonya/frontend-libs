@@ -19,4 +19,4 @@ jobs:
           lerna publish from-package --yes \
             --dist-tag ${{ github.event.release.prerelease && 'prerelease' || 'latest' }}
         env:
-          NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          NODE_AUTH_TOKEN: ${{ secrets.RELEASE_PACKAGE_TOKEN }}
