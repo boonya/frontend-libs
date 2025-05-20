@@ -33,17 +33,11 @@ export default {
   moduleNameMapper: {
     '\\.(css|less)$': '<rootDir>/tests/stubs/styleMock.js',
     '.(?:gif|png|jpe?g|svg|woff2?)$': '<rootDir>/tests/stubs/staticFile.ts',
+    '@boonya/frontend-utils': '<rootDir>/packages/frontend-utils/src/index.ts',
     '@boonya/frontend-utils/(.*)$': '<rootDir>/packages/frontend-utils/src/$1',
     '@boonya/react-utils/(.*)$': '<rootDir>/packages/react-utils/src/$1',
     '@tests/(.*)$': '<rootDir>tests/$1',
   },
   modulePathIgnorePatterns: ['<rootDir>/build/', '<rootDir>/packages/[^/]+/build/'],
-  transform: {
-    /**
-     * Here you can read a bit about "ts-jest" slow down and why we need "isolatedModules".
-     * https://stackoverflow.com/questions/45087018/jest-simple-tests-are-slow
-     */
-    '^.+\\.tsx?$': ['ts-jest', {isolatedModules: true}],
-  },
   transformIgnorePatterns: ['/node_modules/', '\\.pnp\\.[^\\/]+$'],
 } satisfies JestConfigWithTsJest;
