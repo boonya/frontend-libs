@@ -17,10 +17,11 @@ jobs:
       - run: npm ci
       - run: npm run build
       - run: |
+          npm set '//npm.pkg.github.com/:_authToken=${{ secrets.RELEASE_PACKAGE_TOKEN }}'
           npm set @boonya:registry=https://npm.pkg.github.com/
           lerna publish --canary --yes \
             --preid canary \
             --pre-dist-tag canary \
             --loglevel 4
-        env:
-          NODE_AUTH_TOKEN: ${{ secrets.RELEASE_PACKAGE_TOKEN }}
+        # env:
+        #   NODE_AUTH_TOKEN: ${{ secrets.RELEASE_PACKAGE_TOKEN }}
