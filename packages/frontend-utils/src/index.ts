@@ -1,5 +1,4 @@
-import debounce from 'lodash/debounce';
-import throttle from 'lodash/throttle';
+import {throttle, debounce} from 'lodash';
 
 export {ExtendableError} from './errors';
 
@@ -26,15 +25,15 @@ export {ExtendableError} from './errors';
  * @param {boolean} [options.leading=false] Specify invoking on the leading edge of the timeout.
  * @param {number} [options.maxWait] The maximum time func is allowed to be delayed before it's invoked.
  * @param {boolean} [options.trailing=true] Specify invoking on the trailing edge of the timeout.
- * @returns {Function}
+ * @returns {Function} Returns new debounced function.
  */
-export function asyncDebounce(
-  func: Function,
+export function asyncDebounce<F extends (...args: P[]) => unknown, P = unknown>(
+  func: F,
   wait?: number,
   options?: Partial<{leading: boolean; trailing: boolean; maxWait: number}>,
 ) {
   const debounced = debounce(
-    async (resolve, reject, args) => {
+    async (resolve, reject, args: P[]) => {
       try {
         const result = await func(...args);
         resolve(result);
@@ -46,7 +45,7 @@ export function asyncDebounce(
     options,
   );
 
-  return (...args) =>
+  return (...args: P[]) =>
     new Promise((resolve, reject) => {
       debounced(resolve, reject, args);
     });
@@ -74,11 +73,15 @@ export function asyncDebounce(
  * @param {object} [options] The options object.
  * @param {boolean} [options.leading=true] Specify invoking on the leading edge of the timeout.
  * @param {boolean} [options.trailing=true] Specify invoking on the trailing edge of the timeout.
- * @returns {Function} Returns the new throttled function.
+ * @returns {Function} Returns new throttled function.
  */
-export function asyncThrottle(func: Function, wait?: number, options?: Partial<{leading: boolean; trailing: boolean}>) {
+export function asyncThrottle<F extends (...args: P[]) => unknown, P = unknown>(
+  func: F,
+  wait?: number,
+  options?: Partial<{leading: boolean; trailing: boolean}>,
+) {
   const throttled = throttle(
-    async (resolve, reject, args) => {
+    async (resolve, reject, args: P[]) => {
       try {
         const result = await func(...args);
         resolve(result);
@@ -90,7 +93,7 @@ export function asyncThrottle(func: Function, wait?: number, options?: Partial<{
     options,
   );
 
-  return (...args) =>
+  return (...args: P[]) =>
     new Promise((resolve, reject) => {
       throttled(resolve, reject, args);
     });
