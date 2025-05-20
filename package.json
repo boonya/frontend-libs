@@ -21,7 +21,7 @@
     "release": "lerna publish",
     "test": "echo 'Not impelmented yet.' && exit 0",
     "typecheck": "tsc -b tsconfig.json",
-    "verify": "concurrently -c auto npm:codestyle:check . npm:lint npm:typecheck npm:test"
+    "verify": "concurrently -c auto npm:\"codestyle:check .\" npm:lint npm:typecheck npm:test"
   },
   "dependencies": {
     "@tsconfig/node22": "^22.0.1",
