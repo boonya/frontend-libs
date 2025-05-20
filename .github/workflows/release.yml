@@ -13,7 +13,8 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version-file: ".nvmrc"
-      - run: npm set '//npm.pkg.github.com/:_authToken=${{ secrets.RELEASE_PACKAGE_TOKEN }}'
+      # - run: npm set '//npm.pkg.github.com/:_authToken=${{ secrets.RELEASE_PACKAGE_TOKEN }}'
+      - run: npm set @boonya:registry=https://npm.pkg.github.com/
       - run: npm ci
       - run: npm run build
       - run: |
