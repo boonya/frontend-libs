@@ -1,0 +1,10 @@
+{
+  "$schema": "node_modules/lerna/schemas/lerna-schema.json",
+  "version": "independent",
+  "command": {
+    "publish": {
+      "directory": "build",
+      "assets": ["README.md", "CHANGELOG.md", "package.json"]
+    }
+  }
+}

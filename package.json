@@ -13,9 +13,12 @@
     "packages/*"
   ],
   "scripts": {
+    "prebuild": "rm -rf packages/**/build/ packages/**/*.tsbuildinfo",
+    "build": "lerna run build",
     "codestyle:check": "prettier --check",
     "codestyle:format": "prettier --write",
     "lint": "echo 'Not impelmented yet.' && exit 0",
+    "release": "lerna publish",
     "test": "echo 'Not impelmented yet.' && exit 0",
     "typecheck": "tsc -b tsconfig.json",
     "verify": "concurrently -c auto npm:codestyle:check . npm:lint npm:typecheck npm:test"
@@ -28,6 +31,7 @@
   },
   "devDependencies": {
     "concurrently": "^9.1.2",
+    "lerna": "^8.2.2",
     "prettier": "^3.5.3",
     "react": "^19.1.0",
     "react-dom": "^19.1.0"

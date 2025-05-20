@@ -4,7 +4,8 @@ import {ExtendableError} from '@boonya/frontend-utils';
  * Indicate that REST API call has failed.
  *
  * @param {string} message
- * @param {{cause: Response}} options
+ * @param {object} options
+ * @param {Response} options.cause
  */
 export class RestApiRequestError extends ExtendableError {}
 
@@ -12,9 +13,17 @@ export class RestApiRequestError extends ExtendableError {}
  * Indicate that REST API call responded with error.
  *
  * @param {string} message
- * @param {{cause: Response}} options
+ * @param {object} options
+ * @param {Response} options.cause
  */
 export class RestApiResponseError extends ExtendableError {}
+
+interface Params {
+  method?: 'GET' | 'POST' | 'PUT' | 'PATCH' | 'DELETE' | (string & {});
+  search?: URLSearchParams;
+  headers?: HeadersInit;
+  body?: BodyInit;
+}
 
 /**
  * General purpose function to perform REST API queries.
@@ -27,37 +36,21 @@ export class RestApiResponseError extends ExtendableError {}
  * @param {BodyInit} [params.body]
  * @returns {Promise<Response>}
  */
-interface Params {
-  method?: 'GET' | 'POST' | 'PUT' | 'PATCH' | 'DELETE';
-  search?: URLSearchParams;
-  headers?: HeadersInit;
-  body?: BodyInit;
-}
-
-export default async function rest(url: string, params: Params = {}) {
+export default async function restApiFetch(url: string, params: Params = {}) {
   try {
-    let {search, headers, ...restParams} = params;
+    const {search, ...init} = params;
     const resource = [url, search?.toString()].filter(Boolean).join('?');
 
-    const response = await fetch(resource, {
-      ...restParams,
-      headers: new Headers({
-        Accept: 'application/json',
-        'Content-Type': 'application/json',
-        ...headers,
-      }),
-    });
+    const response = await fetch(resource, init);
 
     if (!response.ok) {
-      throw new RestApiResponseError(response.statusText, {
-        cause: response,
-      });
+      throw new RestApiResponseError(response.statusText, {cause: response});
     }
     return response;
-  } catch (err) {
-    if (err instanceof RestApiResponseError) {
-      throw err;
+  } catch (error) {
+    if (error instanceof RestApiResponseError) {
+      throw error;
     }
-    throw new RestApiRequestError('REST API request has failed.', {cause: err});
+    throw new RestApiRequestError('REST API request has failed.', {cause: error});
   }
 }
