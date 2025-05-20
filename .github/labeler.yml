@@ -1,8 +1,5 @@
 # Read more https://github.com/actions/labeler
 
-"v2.0":
-  - "base-branch": ["main"]
-
 root:
   - changed-files:
       - any-glob-to-any-file: "*"
