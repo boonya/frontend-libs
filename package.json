@@ -10,6 +10,7 @@
     "npm": "~10.9.2"
   },
   "workspaces": [
+    "eslint",
     "packages/*",
     "tests"
   ],
@@ -18,7 +19,7 @@
     "build": "lerna run build",
     "codestyle:check": "prettier --check",
     "codestyle:format": "prettier --write",
-    "lint": "echo 'Not impelmented yet.' && exit 0",
+    "lint": "eslint",
     "release": "lerna publish",
     "test": "jest",
     "typecheck": "tsc -b tsconfig.json",
