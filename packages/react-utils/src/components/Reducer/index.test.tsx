@@ -1,10 +1,10 @@
 import {PropsWithChildren, ReactNode, createContext} from 'react';
-import {renderComponent, screen, within} from '@testing-library/react';
+import {render, screen, within} from '@testing-library/react';
 import useSafeContext from '@boonya/react-utils/hooks/useSafeContext';
 import Reducer from '@boonya/react-utils/components/Reducer';
 
 it('should properly render tree of components.', () => {
-  renderComponent(
+  render(
     <Reducer
       tree={[
         (props: PropsWithChildren) => <span data-testid="top" {...props} />,
@@ -48,7 +48,7 @@ it('should render a tree of components with context.', () => {
     return <span data-testid="consumer" />;
   }
 
-  renderComponent(
+  render(
     <Reducer tree={[Top, Middle, Bottom]}>
       <Consumer />
     </Reducer>,
