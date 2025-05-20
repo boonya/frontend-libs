@@ -1,0 +1,40 @@
+name: Draft a Release
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - packages/*/package.json
+
+permissions:
+  # write permission is required to create a github release
+  contents: write
+  # write permission is required for autolabeler
+  # otherwise, read permission is required at least
+  pull-requests: read
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: boonya/gh-action-name-generator@v1
+        with:
+          style: lowerCase
+          separator: "-"
+          length: 3
+          seed: ${{ github.sha }}
+        id: generated-tag
+      - uses: boonya/gh-action-name-generator@v1
+        with:
+          style: capital
+          separator: " "
+          length: 3
+          seed: ${{ github.sha }}
+        id: generated-name
+      - uses: release-drafter/release-drafter@v6
+        with:
+          name: "${{ steps.generated-name.outputs.name }}"
+          tag: "${{ steps.generated-tag.outputs.name }}"
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

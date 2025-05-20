@@ -1,0 +1,34 @@
+# Read more https://github.com/actions/labeler
+
+# Add 'repo' label to any root file changes
+repo:
+  - "*"
+
+github:
+  - ".github/*"
+
+documentation:
+  - "**/*.md"
+  - "**/*.mdx"
+
+components:
+  - "packages/react-utils/components/**"
+
+hooks:
+  - "packages/react-utils/hooks/**"
+
+react-utils:
+  - "packages/react-utils/**"
+
+frontend-utils:
+  - "packages/frontend-utils/**"
+
+tests:
+  - "**/*.test.ts"
+  - "**/*.test.tsx"
+  - "test/**"
+
+stories:
+  - "**/*.stories.ts"
+  - "**/*.stories.tsx"
+  - ".storybook/**"
