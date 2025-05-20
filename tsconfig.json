@@ -4,6 +4,7 @@
     "allowSyntheticDefaultImports": true,
     "baseUrl": ".",
     "inlineSources": true,
+    "skipLibCheck": true,
     "jsx": "react-jsx",
     "lib": ["es2023", "dom"],
     "noEmit": true,
@@ -15,9 +16,6 @@
       "@boonya/frontend-utils/*": ["packages/frontend-utils/src/*"],
       "@boonya/react-utils/*": ["packages/react-utils/src/*"]
     }
-  },
-  "ts-node": {
-    "transpileOnly": true
   },
   "exclude": ["**/__.**", "**/build/", "**/coverage/", "**/node_modules/", "**/storybook-static/"]
 }

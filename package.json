@@ -10,7 +10,8 @@
     "npm": "~10.9.2"
   },
   "workspaces": [
-    "packages/*"
+    "packages/*",
+    "tests"
   ],
   "scripts": {
     "prebuild": "rm -rf packages/**/build/ packages/**/*.tsbuildinfo",
@@ -19,15 +20,15 @@
     "codestyle:format": "prettier --write",
     "lint": "echo 'Not impelmented yet.' && exit 0",
     "release": "lerna publish",
-    "test": "echo 'Not impelmented yet.' && exit 0",
+    "test": "jest",
     "typecheck": "tsc -b tsconfig.json",
     "verify": "concurrently -c auto npm:\"codestyle:check .\" npm:lint npm:typecheck npm:test"
   },
   "dependencies": {
-    "@tsconfig/node22": "^22.0.1",
+    "@tsconfig/node22": "^22.0.2",
     "ts-node": "^10.9.2",
     "typescript": "^5.8.3",
-    "zod": "^3.25.1"
+    "zod": "^3.25.7"
   },
   "devDependencies": {
     "concurrently": "^9.1.2",

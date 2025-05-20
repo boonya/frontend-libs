@@ -21,7 +21,6 @@ jobs:
           npm set @boonya:registry=https://npm.pkg.github.com/
           lerna publish --canary --yes \
             --preid canary \
-            --pre-dist-tag canary \
-            --loglevel 4
+            --pre-dist-tag canary
         # env:
         #   NODE_AUTH_TOKEN: ${{ secrets.RELEASE_PACKAGE_TOKEN }}

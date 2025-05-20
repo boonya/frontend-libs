@@ -13,5 +13,5 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version-file: ".nvmrc"
-      - run: npm ci --workspace tests --include-workspace-root
+      - run: npm ci
       - run: npm run test -- --coverage

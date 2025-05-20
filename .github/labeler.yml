@@ -1,34 +1,65 @@
 # Read more https://github.com/actions/labeler
 
-# Add 'repo' label to any root file changes
-repo:
-  - "*"
+root:
+  - changed-files:
+      - any-glob-to-any-file: "*"
 
 github:
-  - ".github/*"
+  - changed-files:
+      - any-glob-to-any-file: ".github/*"
+
+vscode:
+  - changed-files:
+      - any-glob-to-any-file: ".vscode/**"
 
 documentation:
-  - "**/*.md"
-  - "**/*.mdx"
+  - changed-files:
+      - any-glob-to-any-file:
+          - "**/*.md"
+          - "**/*.mdx"
 
-components:
-  - "packages/react-utils/components/**"
+eslint:
+  - changed-files:
+      - any-glob-to-any-file:
+          - "eslint/**"
+          - "eslint.config.mjs"
 
-hooks:
-  - "packages/react-utils/hooks/**"
-
-react-utils:
-  - "packages/react-utils/**"
-
-frontend-utils:
-  - "packages/frontend-utils/**"
-
-tests:
-  - "**/*.test.ts"
-  - "**/*.test.tsx"
-  - "test/**"
+"d.ts":
+  - changed-files:
+      - any-glob-to-any-file:
+          - "**/*.d.ts"
 
 stories:
-  - "**/*.stories.ts"
-  - "**/*.stories.tsx"
-  - ".storybook/**"
+  - changed-files:
+      - any-glob-to-any-file:
+          - "storybook/**"
+          - "**/*.stories.tsx"
+
+tests:
+  - changed-files:
+      - any-glob-to-any-file:
+          - "tests/**"
+          - "**/*.test.tsx"
+          - "**/*.test.ts"
+          - "**/*.spec.tsx"
+          - "**/*.spec.ts"
+
+components:
+  - changed-files:
+      - any-glob-to-any-file:
+          - "packages/react-utils/components/**"
+
+hooks:
+  - changed-files:
+      - any-glob-to-any-file:
+          - "packages/react-utils/hooks/**"
+
+react-utils:
+  - changed-files:
+      - any-glob-to-any-file:
+          - "packages/react-utils/**"
+
+frontend-utils:
+  - changed-files:
+      - any-glob-to-any-file:
+          - "packages/frontend-utils/**"
