@@ -1,6 +1,7 @@
 import {debounce, throttle} from 'lodash';
 
 export {ExtendableError} from './errors';
+export {default as restApiFetch} from './rest-api-fetch';
 
 /**
  * Creates a debounced asynchronous function that delays invoking func until after wait milliseconds have elapsed
