@@ -15,11 +15,12 @@
     "tests"
   ],
   "scripts": {
-    "prebuild": "rm -rf packages/**/build/ packages/**/*.tsbuildinfo",
     "build": "lerna run build",
     "codestyle:check": "prettier --check",
     "codestyle:format": "prettier --write",
+    "format": "npm run codestyle:format .",
     "lint": "eslint",
+    "prebuild": "rm -rf packages/**/build/ packages/**/*.tsbuildinfo",
     "release": "lerna publish",
     "test": "jest",
     "typecheck": "tsc -b tsconfig.json",

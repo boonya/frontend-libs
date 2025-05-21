@@ -1,4 +1,4 @@
-import {throttle, debounce} from 'lodash';
+import {debounce, throttle} from 'lodash';
 
 export {ExtendableError} from './errors';
 

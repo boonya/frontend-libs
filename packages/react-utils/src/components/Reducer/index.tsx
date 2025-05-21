@@ -1,8 +1,8 @@
 import {ReactElement, ReactNode} from 'react';
 
-type ParentComponentProps = {
+interface ParentComponentProps {
   children: ReactNode;
-};
+}
 
 type ParentComponent = (_: ParentComponentProps) => ReactElement;
 

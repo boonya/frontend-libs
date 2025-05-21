@@ -1,4 +1,4 @@
-import {useContext, Context} from 'react';
+import {Context, useContext} from 'react';
 import {ExtendableError} from '@boonya/frontend-utils';
 
 export class MissedContextError extends ExtendableError {}

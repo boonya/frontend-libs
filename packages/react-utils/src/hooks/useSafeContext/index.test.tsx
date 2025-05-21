@@ -1,5 +1,5 @@
+import {render, renderHook, screen} from '@testing-library/react';
 import {createContext} from 'react';
-import {renderHook, render, screen} from '@testing-library/react';
 import useSafeContext from '@boonya/react-utils/hooks/useSafeContext';
 
 it('should throw an error rendered outside of ContextProvider', () => {

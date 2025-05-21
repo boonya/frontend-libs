@@ -1,14 +1,14 @@
-import js from '@eslint/js';
+import {defineConfig} from 'eslint/config';
 import globals from 'globals';
-import ts from 'typescript-eslint';
+import js from '@eslint/js';
+import json from '@eslint/json';
+import markdown from '@eslint/markdown';
+import prettier from 'eslint-config-prettier/flat';
 import react from 'eslint-plugin-react';
 import reactHooks from 'eslint-plugin-react-hooks';
 import security from 'eslint-plugin-security';
+import ts from 'typescript-eslint';
 import unicorn from 'eslint-plugin-unicorn';
-
-import json from '@eslint/json';
-import markdown from '@eslint/markdown';
-import {defineConfig} from 'eslint/config';
 
 const files = {
   json: ['**/*.json'],
@@ -34,7 +34,7 @@ const tsConfig = ts.config(
   [
     {
       files: files.tsOnly,
-      ...ts.configs.stylisticTypeChecked[1],
+      ...ts.configs.stylisticTypeChecked[2],
     },
   ],
 );
@@ -89,12 +89,12 @@ export default defineConfig([
     },
   },
   // Overrides and custom rulesets
+  prettier,
   {
-    files: files.jsTs,
     rules: {
       'no-console': 'error',
       'no-debugger': 'error',
-      // '@typescript-eslint/consistent-type-definitions': ['error', 'interface'],
+      'sort-imports': 'error',
       // 'no-unused-vars': ['error', {argsIgnorePattern: '^_'}],
       // 'filenames/match-exported': 'error',
       // 'import/no-deprecated': 'warn',
