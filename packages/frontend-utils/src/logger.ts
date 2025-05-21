@@ -7,8 +7,24 @@ const logFunction = (method: Method) => (message: string) => (cause?: unknown, d
     return index < items.length - 1 ? [item, '\n'] : [item];
   });
   /* eslint-disable no-console */
-  console[method](...payload);
-  /* eslint-enable no-console */
+  switch (method) {
+    case 'info': {
+      console.info(...payload);
+      break;
+    }
+    case 'warn': {
+      console.warn(...payload);
+      break;
+    }
+    case 'error': {
+      console.error(...payload);
+      break;
+    }
+    default: {
+      console.info(...payload);
+      console.error(`Unknown log method "${method}", fall back to "console.info".`);
+    }
+  }
 };
 
 export const logInfo = logFunction('info');

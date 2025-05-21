@@ -1,4 +1,4 @@
-import {throttle, debounce} from 'lodash';
+import {debounce, throttle} from 'lodash';
 
 export {ExtendableError} from './errors';
 
@@ -27,18 +27,18 @@ export {ExtendableError} from './errors';
  * @param {boolean} [options.trailing=true] Specify invoking on the trailing edge of the timeout.
  * @returns {Function} Returns new debounced function.
  */
-export function asyncDebounce<F extends (...args: P[]) => unknown, P = unknown>(
+export function asyncDebounce<F extends (...args: P[]) => R, P = unknown, R = unknown>(
   func: F,
   wait?: number,
   options?: Partial<{leading: boolean; trailing: boolean; maxWait: number}>,
 ) {
   const debounced = debounce(
-    async (resolve, reject, args: P[]) => {
+    async (resolve: (value: R | PromiseLike<R>) => void, reject: (v?: unknown) => void, args: P[]) => {
       try {
         const result = await func(...args);
         resolve(result);
-      } catch (err) {
-        reject(err);
+      } catch (error) {
+        reject(error);
       }
     },
     wait,
@@ -47,7 +47,7 @@ export function asyncDebounce<F extends (...args: P[]) => unknown, P = unknown>(
 
   return (...args: P[]) =>
     new Promise((resolve, reject) => {
-      debounced(resolve, reject, args);
+      void debounced(resolve, reject, args);
     });
 }
 
@@ -75,18 +75,18 @@ export function asyncDebounce<F extends (...args: P[]) => unknown, P = unknown>(
  * @param {boolean} [options.trailing=true] Specify invoking on the trailing edge of the timeout.
  * @returns {Function} Returns new throttled function.
  */
-export function asyncThrottle<F extends (...args: P[]) => unknown, P = unknown>(
+export function asyncThrottle<F extends (...args: P[]) => R, P = unknown, R = unknown>(
   func: F,
   wait?: number,
   options?: Partial<{leading: boolean; trailing: boolean}>,
 ) {
   const throttled = throttle(
-    async (resolve, reject, args: P[]) => {
+    async (resolve: (value: R | PromiseLike<R>) => void, reject: (v?: unknown) => void, args: P[]) => {
       try {
         const result = await func(...args);
         resolve(result);
-      } catch (err) {
-        reject(err);
+      } catch (error) {
+        reject(error);
       }
     },
     wait,
@@ -95,6 +95,6 @@ export function asyncThrottle<F extends (...args: P[]) => unknown, P = unknown>(
 
   return (...args: P[]) =>
     new Promise((resolve, reject) => {
-      throttled(resolve, reject, args);
+      void throttled(resolve, reject, args);
     });
 }

@@ -7,7 +7,6 @@ declare global {
    *
    * @see: https://www.youtube.com/watch?v=2lCCKiWGlC0&ab_channel=MattPocock
    */
-  // eslint-disable-next-line @typescript-eslint/ban-types
   type Prettify<T> = {[K in keyof T]: T[K]} & {};
 
   /**
