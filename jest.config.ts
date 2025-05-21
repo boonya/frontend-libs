@@ -16,19 +16,19 @@ export default {
   // collectCoverage: true,
   coverageDirectory: './coverage',
   coveragePathIgnorePatterns: ['storybook/', 'build/', 'docs/', 'node_modules/', 'tests/'],
-  coverageReporters: ['text'],
+  coverageReporters: ['text', 'html'],
   // coverageThreshold: {
-  // 	/**
-  // 	 * Just in case
-  // 	 * - https://jestjs.io/docs/configuration/#coveragethreshold-object
-  // 	 * - https://github.com/istanbuljs/nyc#parsing-hints-ignoring-lines
-  // 	 */
-  // 	global: {
-  // 		branches: 80,
-  // 		functions: 80,
-  // 		lines: 80,
-  // 		statements: -10,
-  // 	},
+  //   /**
+  //    * Just in case
+  //    * - https://jestjs.io/docs/configuration/#coveragethreshold-object
+  //    * - https://github.com/istanbuljs/nyc#parsing-hints-ignoring-lines
+  //    */
+  //   global: {
+  //     branches: 80,
+  //     functions: 80,
+  //     lines: 80,
+  //     statements: -10,
+  //   },
   // },
   moduleNameMapper: {
     '\\.(css|less)$': '<rootDir>/tests/stubs/style-mock.js',
