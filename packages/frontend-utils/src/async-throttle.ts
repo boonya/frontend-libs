@@ -24,9 +24,8 @@ import {throttle} from 'lodash';
  * @param {boolean} [options.trailing=true] Specify invoking on the trailing edge of the timeout.
  * @returns {Function} Returns new throttled function.
  */
-// @ts-expect-error TODO: later
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
-export default function asyncThrottle<F extends (...args: P) => Promise<R>, P = any, R = unknown>(
+export default function asyncThrottle<F extends (...args: P[]) => Promise<R>, P = any, R = unknown>(
   func: F,
   wait?: number,
   options?: Partial<{leading: boolean; trailing: boolean}>,
@@ -34,7 +33,6 @@ export default function asyncThrottle<F extends (...args: P) => Promise<R>, P = 
   const throttled = throttle(
     async (resolve: (value: R | PromiseLike<R>) => void, reject: (v?: unknown) => void, args: P[]) => {
       try {
-        // @ts-expect-error TODO: later
         const result = await func(...args);
         resolve(result);
       } catch (error) {
@@ -45,10 +43,9 @@ export default function asyncThrottle<F extends (...args: P) => Promise<R>, P = 
     options,
   );
 
-  // @ts-expect-error TODO: later
-  return (...args: P) =>
+  // @ts-expect-error TODO Figure it out later
+  return (...args) =>
     new Promise((resolve, reject) => {
-      // @ts-expect-error TODO: later
       void throttled(resolve, reject, args);
     });
 }
