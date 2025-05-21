@@ -18,7 +18,7 @@ export class RestApiRequestError extends ExtendableError {}
  */
 export class RestApiResponseError extends ExtendableError {}
 
-interface Params {
+export interface RestApiFetchParams {
   method?: 'GET' | 'POST' | 'PUT' | 'PATCH' | 'DELETE' | (string & {});
   search?: URLSearchParams;
   headers?: HeadersInit;
@@ -36,7 +36,7 @@ interface Params {
  * @param {BodyInit} [params.body]
  * @returns {Promise<Response>}
  */
-export default async function restApiFetch(url: string, params: Params = {}) {
+export default async function restApiFetch(url: string, params: RestApiFetchParams = {}) {
   try {
     const {search, ...init} = params;
     const resource = [url, search?.toString()].filter(Boolean).join('?');
