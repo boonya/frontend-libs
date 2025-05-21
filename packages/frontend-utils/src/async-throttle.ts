@@ -24,7 +24,7 @@ import {throttle} from 'lodash';
  * @param {boolean} [options.trailing=true] Specify invoking on the trailing edge of the timeout.
  * @returns {Function} Returns new throttled function.
  */
-export function asyncThrottle<F extends (...args: P[]) => R, P = unknown, R = unknown>(
+export default function asyncThrottle<F extends (...args: P[]) => R, P = unknown, R = unknown>(
   func: F,
   wait?: number,
   options?: Partial<{leading: boolean; trailing: boolean}>,
