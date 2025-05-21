@@ -1,4 +1,7 @@
 import * as reactHooks from 'eslint-plugin-react-hooks';
+// TODO: remove this when eslint-plugin-compat is updated to support ESM
+// eslint-disable-next-line import-x/no-unresolved
+import browsersCompatibility from 'eslint-plugin-compat';
 import {defineConfig} from 'eslint/config';
 import globals from 'globals';
 import importX from 'eslint-plugin-import-x';
@@ -122,6 +125,7 @@ export default defineConfig([
   markdownConfig,
   tsConfig,
   reactConfig,
+  browsersCompatibility.configs['flat/recommended'],
   // Overrides and custom rulesets
   prettier,
   {

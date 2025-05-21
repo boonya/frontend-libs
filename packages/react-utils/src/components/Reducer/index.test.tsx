@@ -3,7 +3,6 @@ import {render, screen, within} from '@testing-library/react';
 import Reducer from '@boonya/react-utils/components/Reducer';
 import useSafeContext from '@boonya/react-utils/hooks/useSafeContext';
 
-
 it('should properly render tree of components.', () => {
   render(
     <Reducer
