@@ -39,5 +39,9 @@
     "prettier": "^3.5.3",
     "react": "^19.1.0",
     "react-dom": "^19.1.0"
+  },
+  "peerDependencies": {
+    "@w/eslint": "*",
+    "@w/tests": "*"
   }
 }

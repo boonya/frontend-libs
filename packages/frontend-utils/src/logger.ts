@@ -22,7 +22,6 @@ const logFunction = (method: Method) => (message: string) => (cause?: unknown, d
     }
     default: {
       console.info(...payload);
-      // eslint-disable-next-line @typescript-eslint/restrict-template-expressions
       console.error(`Unknown log method "${method}", fall back to "console.info".`);
     }
   }
