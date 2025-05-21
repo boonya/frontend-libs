@@ -3,7 +3,7 @@ import {renderHook, render, screen} from '@testing-library/react';
 import useSafeContext from '@boonya/react-utils/hooks/useSafeContext';
 
 it('should throw an error rendered outside of ContextProvider', () => {
-  jest.spyOn(console, 'error').mockImplementation(() => null);
+  jest.spyOn(console, 'error').mockImplementation(() => void 0);
 
   const TestContext = createContext(undefined);
 
@@ -13,6 +13,8 @@ it('should throw an error rendered outside of ContextProvider', () => {
 });
 
 it('should return null.', () => {
+  // NOTE: This is intended to be null, otherwise it would treat the context as non existent.
+  // eslint-disable-next-line unicorn/no-null
   const TestContext = createContext(null);
 
   const {result} = renderHook(() => useSafeContext(TestContext));

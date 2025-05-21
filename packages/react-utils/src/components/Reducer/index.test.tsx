@@ -23,11 +23,16 @@ it('should properly render tree of components.', () => {
 });
 
 it('should render a tree of components with context.', () => {
-  type ParentComponentProps = {children: ReactNode};
+  interface ParentComponentProps {
+    children: ReactNode;
+  }
 
+  // NOTE: This is intended to be null, otherwise it would treat the context as non existent.
+  /* eslint-disable unicorn/no-null */
   const TopContext = createContext<'top' | null>(null);
   const MiddleContext = createContext<'middle' | null>(null);
   const BottomContext = createContext<'bottom' | null>(null);
+  /* eslint-enable unicorn/no-null */
 
   function Top({children}: ParentComponentProps) {
     return <TopContext.Provider value="top">{children}</TopContext.Provider>;
