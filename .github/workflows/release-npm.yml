@@ -23,6 +23,7 @@ jobs:
           lerna publish from-package --yes --summary-file \
             --dist-tag "$DIST_TAG" \
             --registry=https://registry.npmjs.org/ \
+            --access public \
             --loglevel 4
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_PUBLISH_TOKEN }}

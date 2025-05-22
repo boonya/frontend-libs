@@ -24,4 +24,5 @@ jobs:
           lerna publish from-package --yes --summary-file \
             --dist-tag "$DIST_TAG" \
             --registry=https://npm.pkg.github.com/ \
+            --access public \
             --loglevel 4
