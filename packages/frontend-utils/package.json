@@ -1,9 +1,11 @@
 {
-  "name": "@boonya/frontend-utils",
+  "name": "@boonya.dev/frontend-utils",
   "description": "Set of reusable functions, classes and other utils that may be useful to any frontend project.",
-  "repository": "https://github.com/boonya/frontend-libs",
   "homepage": "https://github.com/boonya/frontend-libs/tree/main/packages/frontend-utils#readme",
-  "version": "0.1.0",
+  "repository": {
+    "url": "git+https://github.com/boonya/frontend-libs.git"
+  },
+  "version": "0.1.1",
   "scripts": {
     "build": "tsc -b tsconfig.json"
   },

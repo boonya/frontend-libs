@@ -33,9 +33,9 @@ export default {
   moduleNameMapper: {
     '\\.(css|less)$': '<rootDir>/tests/stubs/style-mock.js',
     '.(?:gif|png|jpe?g|svg|woff2?)$': '<rootDir>/tests/stubs/static-file.ts',
-    '@boonya/frontend-utils': '<rootDir>/packages/frontend-utils/src/index.ts',
-    '@boonya/frontend-utils/(.*)$': '<rootDir>/packages/frontend-utils/src/$1',
-    '@boonya/react-utils/(.*)$': '<rootDir>/packages/react-utils/src/$1',
+    '@boonya.dev/frontend-utils': '<rootDir>/packages/frontend-utils/src/index.ts',
+    '@boonya.dev/frontend-utils/(.*)$': '<rootDir>/packages/frontend-utils/src/$1',
+    '@boonya.dev/react-utils/(.*)$': '<rootDir>/packages/react-utils/src/$1',
     '@tests/(.*)$': '<rootDir>tests/$1',
   },
   modulePathIgnorePatterns: ['<rootDir>/build/', '<rootDir>/packages/[^/]+/build/'],

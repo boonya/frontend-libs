@@ -1,0 +1,28 @@
+name: Release to NPM Container Registry
+
+on:
+  workflow_dispatch:
+  workflow_call:
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version-file: ".nvmrc"
+      - run: npm ci
+      - run: npm run build
+      - run: |
+          if [[ "${{ github.event.release.prerelease }}" == "false" ]]; then
+            DIST_TAG="latest"
+          else
+            DIST_TAG="prerelease"
+          fi
+          lerna publish from-package --yes --summary-file \
+            --dist-tag "$DIST_TAG" \
+            --registry=https://registry.npmjs.org/ \
+            --loglevel 4
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_PUBLISH_TOKEN }}

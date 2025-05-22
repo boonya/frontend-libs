@@ -12,9 +12,9 @@
     "resolveJsonModule": true,
     "sourceMap": true,
     "paths": {
-      "@boonya/frontend-utils": ["packages/frontend-utils/src/index.ts"],
-      "@boonya/frontend-utils/*": ["packages/frontend-utils/src/*"],
-      "@boonya/react-utils/*": ["packages/react-utils/src/*"]
+      "@boonya.dev/frontend-utils": ["packages/frontend-utils/src/index.ts"],
+      "@boonya.dev/frontend-utils/*": ["packages/frontend-utils/src/*"],
+      "@boonya.dev/react-utils/*": ["packages/react-utils/src/*"]
     }
   },
   "exclude": ["**/__.**", "**/build/", "**/coverage/", "**/node_modules/", "**/storybook-static/"]

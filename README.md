@@ -1,4 +1,4 @@
-# @boonya/frontend-libs
+# @boonya.dev/frontend-libs
 
 ## ⚠️ Work in progress 👨‍💻
 

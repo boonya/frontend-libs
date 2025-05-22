@@ -1,4 +1,4 @@
-import {ExtendableError} from '@boonya/frontend-utils';
+import {ExtendableError} from '@boonya.dev/frontend-utils';
 
 /**
  * Indicate that REST API call has failed.

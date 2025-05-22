@@ -1,4 +1,4 @@
-name: Test 👮🏽‍♂️
+name: Verification 👮🏽‍♂️
 
 on:
   workflow_dispatch:
@@ -14,17 +14,17 @@ concurrency:
 
 jobs:
   codestyle:
-    uses: ./.github/workflows/codestyle.yml
+    uses: ./.github/workflows/verify-codestyle.yml
     secrets: inherit
 
   linting:
-    uses: ./.github/workflows/linting.yml
+    uses: ./.github/workflows/verify-linting.yml
     secrets: inherit
 
   typecheck:
-    uses: ./.github/workflows/typecheck.yml
+    uses: ./.github/workflows/verify-typecheck.yml
     secrets: inherit
 
   testing:
-    uses: ./.github/workflows/testing.yml
+    uses: ./.github/workflows/verify-testing.yml
     secrets: inherit

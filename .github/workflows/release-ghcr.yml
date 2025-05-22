@@ -1,0 +1,27 @@
+name: Release to GitHub Container Registry
+
+on:
+  workflow_dispatch:
+  workflow_call:
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version-file: ".nvmrc"
+      - run: npm ci
+      - run: npm run build
+      - run: |
+          npm set '//npm.pkg.github.com/:_authToken=${{ secrets.GHCR_PUBLISH_TOKEN }}'
+          if [[ "${{ github.event.release.prerelease }}" == "false" ]]; then
+            DIST_TAG="latest"
+          else
+            DIST_TAG="prerelease"
+          fi
+          lerna publish from-package --yes --summary-file \
+            --dist-tag "$DIST_TAG" \
+            --registry=https://npm.pkg.github.com/ \
+            --loglevel 4

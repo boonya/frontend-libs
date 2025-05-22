@@ -1,4 +1,4 @@
-name: Canary Release
+name: Canary Release 🐣 to GitHub Container Registry
 
 on:
   workflow_dispatch:
@@ -6,7 +6,6 @@ on:
 jobs:
   publish:
     runs-on: ubuntu-latest
-    name: Publishing 🚀
     steps:
       - uses: actions/checkout@v4
         with:
@@ -17,10 +16,10 @@ jobs:
       - run: npm ci
       - run: npm run build
       - run: |
-          npm set '//npm.pkg.github.com/:_authToken=${{ secrets.RELEASE_PACKAGE_TOKEN }}'
-          npm set @boonya:registry=https://npm.pkg.github.com/
-          lerna publish --canary --yes \
+          lerna publish --canary --yes --summary-file \
             --preid canary \
-            --pre-dist-tag canary
-        # env:
-        #   NODE_AUTH_TOKEN: ${{ secrets.RELEASE_PACKAGE_TOKEN }}
+            --pre-dist-tag canary \
+            --registry=https://registry.npmjs.org/ \
+            --loglevel 4
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_PUBLISH_TOKEN }}

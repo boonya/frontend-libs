@@ -1,6 +1,6 @@
 import {render, renderHook, screen} from '@testing-library/react';
 import {createContext} from 'react';
-import useSafeContext from '@boonya/react-utils/hooks/useSafeContext';
+import useSafeContext from '@boonya.dev/react-utils/hooks/useSafeContext';
 
 it('should throw an error rendered outside of ContextProvider', () => {
   jest.spyOn(console, 'error').mockImplementation(() => void 0);

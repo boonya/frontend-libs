@@ -1,24 +1,16 @@
-name: Release
+name: Release 🚀
 
 on:
+  workflow_dispatch:
   release:
     types:
       - published
 
 jobs:
-  publish:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-node@v4
-        with:
-          node-version-file: ".nvmrc"
-      - run: npm ci
-      - run: npm run build
-      - run: |
-          npm set '//npm.pkg.github.com/:_authToken=${{ secrets.RELEASE_PACKAGE_TOKEN }}'
-          npm set @boonya:registry=https://npm.pkg.github.com/
-          lerna publish from-package --yes \
-            --dist-tag ${{ github.event.release.prerelease && 'prerelease' || 'latest' }}
-        # env:
-        #   NODE_AUTH_TOKEN: ${{ secrets.RELEASE_PACKAGE_TOKEN }}
+  ghcr:
+    uses: ./.github/workflows/release-ghcr.yml
+    secrets: inherit
+
+  npm:
+    uses: ./.github/workflows/release-npm.yml
+    secrets: inherit

@@ -1,7 +1,10 @@
 {
-  "name": "@boonya/frontend-libs",
+  "name": "@boonya.dev/frontend-libs",
   "description": "A set of helpfull utilities that may be useful while doing frontend development.",
-  "repository": "https://github.com/boonya/frontend-libs",
+  "homepage": "https://github.com/boonya/frontend-libs/tree/main#readme",
+  "repository": {
+    "url": "git+https://github.com/boonya/frontend-libs.git"
+  },
   "author": "Serhii <boonya> Buinytskyi",
   "license": "MIT",
   "version": "0.0.1",
@@ -24,7 +27,8 @@
     "release": "lerna publish",
     "test": "jest",
     "typecheck": "tsc -b tsconfig.json",
-    "verify": "concurrently -c auto npm:\"codestyle:check .\" npm:lint npm:typecheck npm:test"
+    "verify": "concurrently -c auto npm:\"codestyle:check .\" npm:lint npm:typecheck npm:test",
+    "version:bump": "lerna version $1 --no-git-tag-version --no-push"
   },
   "dependencies": {
     "@tsconfig/node22": "^22.0.2",

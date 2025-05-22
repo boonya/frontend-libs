@@ -1,9 +1,11 @@
 {
-  "name": "@boonya/react-utils",
+  "name": "@boonya.dev/react-utils",
   "description": "Set of reusable react hooks, components and so on.",
-  "repository": "https://github.com/boonya/frontend-libs",
   "homepage": "https://github.com/boonya/frontend-libs/tree/main/packages/react-utils#readme",
-  "version": "0.1.0",
+  "version": "0.1.1",
+  "repository": {
+    "url": "git+https://github.com/boonya/frontend-libs.git"
+  },
   "scripts": {
     "build": "tsc -b tsconfig.json"
   },
@@ -14,7 +16,7 @@
     "react-dom": "^16.8 || ^17 || ^18 || ^19"
   },
   "dependencies": {
-    "@boonya/frontend-utils": "^0.1.0"
+    "@boonya.dev/frontend-utils": "^0.1.1"
   },
   "devDependencies": {
     "@types/react": "^19.1.4",
