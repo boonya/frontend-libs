@@ -16,6 +16,7 @@ jobs:
       - run: npm ci
       - run: npm run build
       - run: |
+          npm config set //registry.npmjs.org/:_authToken $NODE_AUTH_TOKEN
           lerna publish --canary --yes --summary-file \
             --preid canary \
             --pre-dist-tag canary \
