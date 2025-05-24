@@ -5,6 +5,11 @@
   "repository": {
     "url": "git+https://github.com/boonya/frontend-libs.git"
   },
+  "publishConfig": {
+    "access": "public"
+  },
+  "author": "Serhii <boonya> Buinytskyi",
+  "license": "MIT",
   "version": "0.1.3",
   "scripts": {
     "build": "tsc -b tsconfig.json"

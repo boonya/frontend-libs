@@ -2,10 +2,12 @@
   "name": "@boonya.dev/react-utils",
   "description": "Set of reusable react hooks, components and so on.",
   "homepage": "https://github.com/boonya/frontend-libs/tree/main/packages/react-utils#readme",
-  "version": "0.1.3",
   "repository": {
     "url": "git+https://github.com/boonya/frontend-libs.git"
   },
+  "author": "Serhii <boonya> Buinytskyi",
+  "license": "MIT",
+  "version": "0.1.3",
   "scripts": {
     "build": "tsc -b tsconfig.json"
   },
