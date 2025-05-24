@@ -15,14 +15,15 @@ jobs:
       - run: npm ci
       - run: npm run build
       - run: |
-          npm set '//npm.pkg.github.com/:_authToken=${{ secrets.GHCR_PUBLISH_TOKEN }}'
           if [[ "${{ github.event.release.prerelease }}" == "false" ]]; then
             DIST_TAG="latest"
           else
             DIST_TAG="prerelease"
           fi
+          npm config set //npm.pkg.github.com/:_authToken $AUTH_TOKEN
           lerna publish from-package --yes --summary-file \
             --dist-tag "$DIST_TAG" \
             --registry=https://npm.pkg.github.com/ \
-            --access public \
             --loglevel 4
+        env:
+          AUTH_TOKEN: ${{ secrets.GHCR_PUBLISH_TOKEN }}

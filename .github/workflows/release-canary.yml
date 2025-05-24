@@ -16,11 +16,11 @@ jobs:
       - run: npm ci
       - run: npm run build
       - run: |
-          npm config set //registry.npmjs.org/:_authToken $NODE_AUTH_TOKEN
+          npm config set //registry.npmjs.org/:_authToken $AUTH_TOKEN
           lerna publish --canary --yes --summary-file \
             --preid canary \
             --pre-dist-tag canary \
             --registry=https://registry.npmjs.org/ \
             --loglevel 4
         env:
-          NODE_AUTH_TOKEN: ${{ secrets.NPM_PUBLISH_TOKEN }}
+          AUTH_TOKEN: ${{ secrets.NPM_PUBLISH_TOKEN }}
