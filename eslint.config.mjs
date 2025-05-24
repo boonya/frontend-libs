@@ -1,7 +1,4 @@
 import * as reactHooks from 'eslint-plugin-react-hooks';
-// TODO: remove this when eslint-plugin-compat is updated to support ESM
-// eslint-disable-next-line import-x/no-unresolved
-import browsersCompatibility from 'eslint-plugin-compat';
 import {defineConfig} from 'eslint/config';
 import globals from 'globals';
 import importX from 'eslint-plugin-import-x';
@@ -14,6 +11,9 @@ import security from 'eslint-plugin-security';
 import ts from 'typescript-eslint';
 import tsParser from '@typescript-eslint/parser';
 import unicorn from 'eslint-plugin-unicorn';
+// TODO: Address this strange issue somehow later
+// eslint-disable-next-line import-x/no-unresolved
+import browsersCompatibility from 'eslint-plugin-compat';
 
 const files = {
   json: ['**/*.json'],
@@ -55,9 +55,18 @@ const importXConfig = [
       sourceType: 'module',
     },
     rules: {
-      // 'import-x/no-dynamic-require': 'warn',
-      // 'import-x/no-nodejs-modules': 'warn',
       'import-x/no-deprecated': 'warn',
+      'import-x/order': [
+        'warn',
+        {
+          pathGroups: [
+            {
+              pattern: '@/**',
+              group: 'parent',
+            },
+          ],
+        },
+      ],
     },
   },
 ];
@@ -91,6 +100,16 @@ const unicornConfig = {
   rules: {
     ...unicorn.configs.recommended.rules,
     'unicorn/prevent-abbreviations': 'off',
+    'unicorn/filename-case': [
+      'warn',
+      {
+        cases: {
+          pascalCase: true,
+          camelCase: true,
+          kebabCase: true,
+        },
+      },
+    ],
   },
 };
 
@@ -133,11 +152,7 @@ export default defineConfig([
       'no-console': 'error',
       'no-alert': 'error',
       'no-debugger': 'error',
-      'no-warning-comments': ['warn', {terms: ['TODO', 'FIXME', 'to do'], location: 'anywhere'}],
-      'sort-imports': 'error',
-      // 'no-unused-vars': ['error', {argsIgnorePattern: '^_'}],
-      // 'filenames/match-exported': 'error',
-      // 'import/no-deprecated': 'warn',
+      'no-warning-comments': ['warn', {terms: ['todo', 'fixme'], location: 'anywhere'}],
     },
   },
 ]);

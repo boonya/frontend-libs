@@ -34,7 +34,7 @@
     "@tsconfig/node22": "^22.0.2",
     "ts-node": "^10.9.2",
     "typescript": "^5.8.3",
-    "zod": "^3.25.7"
+    "zod": "^3.25.28"
   },
   "devDependencies": {
     "concurrently": "^9.1.2",

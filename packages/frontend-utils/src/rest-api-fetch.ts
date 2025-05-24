@@ -23,6 +23,7 @@ export interface RestApiFetchParams {
   search?: URLSearchParams;
   headers?: HeadersInit;
   body?: BodyInit;
+  signal?: AbortSignal;
 }
 
 /**
