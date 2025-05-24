@@ -1,4 +1,4 @@
-name: Canary Release 🐣 to GitHub Container Registry
+name: Canary Release 🐣 to NPM Container Registry
 
 on:
   workflow_dispatch:
