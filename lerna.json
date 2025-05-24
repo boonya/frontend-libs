@@ -4,7 +4,7 @@
   "command": {
     "publish": {
       "directory": "build",
-      "assets": ["README.md", "CHANGELOG.md", "package.json"]
+      "assets": ["README.md", "CHANGELOG.md", "package.json", "../../LICENSE"]
     }
   }
 }
