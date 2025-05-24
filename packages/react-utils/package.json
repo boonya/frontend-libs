@@ -7,7 +7,7 @@
   },
   "author": "Serhii <boonya> Buinytskyi",
   "license": "MIT",
-  "version": "0.1.3",
+  "version": "0.1.4",
   "scripts": {
     "build": "tsc -b tsconfig.json"
   },
@@ -18,7 +18,7 @@
     "react-dom": "^16.8 || ^17 || ^18 || ^19"
   },
   "dependencies": {
-    "@boonya.dev/frontend-utils": "^0.1.3"
+    "@boonya.dev/frontend-utils": "^0.1.4"
   },
   "devDependencies": {
     "@types/react": "^19.1.5",
