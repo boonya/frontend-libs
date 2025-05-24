@@ -24,7 +24,6 @@
     "format": "npm run codestyle:format .",
     "lint": "eslint",
     "prebuild": "rm -rf packages/**/build/ packages/**/*.tsbuildinfo",
-    "release": "lerna publish",
     "test": "jest",
     "typecheck": "tsc -b tsconfig.json",
     "verify": "concurrently -c auto npm:\"codestyle:check .\" npm:lint npm:typecheck npm:test",
