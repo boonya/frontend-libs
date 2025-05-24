@@ -2,6 +2,15 @@ name: Release to NPM Container Registry
 
 on:
   workflow_dispatch:
+    inputs:
+      dist_tag:
+        description: "This release will be labeled as..."
+        required: true
+        default: prerelease
+        type: choice
+        options:
+          - prerelease
+          - latest
   workflow_call:
 
 jobs:
@@ -17,8 +26,10 @@ jobs:
       - run: |
           if [[ "${{ github.event.release.prerelease }}" == "false" ]]; then
             DIST_TAG="latest"
-          else
+          elif [[ "${{ github.event.release.prerelease }}" == "true" ]]; then
             DIST_TAG="prerelease"
+          else
+            DIST_TAG="${{ inputs.dist_tag }}"
           fi
           npm config set //registry.npmjs.org/:_authToken $AUTH_TOKEN
           lerna publish from-package --yes --summary-file \
