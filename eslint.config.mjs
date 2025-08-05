@@ -1,7 +1,7 @@
 import * as reactHooks from 'eslint-plugin-react-hooks';
 import {defineConfig} from 'eslint/config';
 import globals from 'globals';
-import importX from 'eslint-plugin-import-x';
+import {importX} from 'eslint-plugin-import-x';
 import js from '@eslint/js';
 import json from '@eslint/json';
 import markdown from '@eslint/markdown';
@@ -43,9 +43,7 @@ const tsConfig = ts.config(
 );
 
 const importXConfig = [
-  // eslint-disable-next-line import-x/no-named-as-default-member
   importX.flatConfigs.recommended,
-  // eslint-disable-next-line import-x/no-named-as-default-member
   importX.flatConfigs.typescript,
   {
     files: ['**/*.{js,mjs,cjs,jsx,mjsx,ts,tsx,mtsx}'],
